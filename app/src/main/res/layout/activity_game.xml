@@ -8,58 +8,51 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/count_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@drawable/border"
+        android:gravity="center"/>
+
+    <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="16dp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:padding="16dp"
+        android:background="@drawable/border"/>
 
     <TextView
         android:id="@+id/optA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:onClick="optAClicked"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:onClick="optAClicked"
+        android:background="@drawable/border"/>
 
     <TextView
         android:id="@+id/optB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:onClick="optBClicked"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:onClick="optBClicked"
+        android:background="@drawable/border"/>
 
     <TextView
         android:id="@+id/optC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:onClick="optCClicked"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"/>
+        android:onClick="optCClicked"
+        android:background="@drawable/border"/>
 
     <TextView
         android:id="@+id/optD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:onClick="optDClicked"/>
+        android:onClick="optDClicked"
+        android:background="@drawable/border"/>
 
 </LinearLayout>

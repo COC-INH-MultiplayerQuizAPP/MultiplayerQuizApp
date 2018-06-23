@@ -77,6 +77,17 @@ public class ScoreActivity extends AppCompatActivity {
 
         TextView final_score = findViewById(R.id.final_score);
         final_score.setText(String.format("%.3f", finalScore));
+
+        // deactivate leaderBoard
+
+        // if group owner
+        // receive scores and playerName from all the players and store in arrayList
+        // if length of arrayList is equal to no. of clients then send the arrayTo all the players
+        // turn leaderBoard on
+
+        // if player
+        // send score along with player name
+        // once the arrayList is received turn on leaderBoard
     }
 
     public void show_leaderboard(View view) {

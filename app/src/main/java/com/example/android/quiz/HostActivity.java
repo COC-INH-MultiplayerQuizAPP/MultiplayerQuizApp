@@ -57,10 +57,12 @@ public class HostActivity extends AppCompatActivity {
     private TextView btnStartHost;
     private TextView btnStartGame;
 
-
     ServerClass serverClass;
     ClientClass clientClass;
     SendReceive sendReceive;
+
+    ArrayList<Socket> socketArrayList;
+    ArrayList<SendReceive> sendReceiveArrayList;
 
     Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -68,8 +70,6 @@ public class HostActivity extends AppCompatActivity {
             switch (msg.what) {
                 case MESSAGE_READ:
                     byte[] readBuff = (byte[]) msg.obj;
-                    // String tempMsg = new String(readBuff, 0, msg.arg1);
-                    // readMsgBox.setText(tempMsg);
                     break;
             }
             return true;
@@ -130,20 +130,34 @@ public class HostActivity extends AppCompatActivity {
         btnStartHost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mManager.discoverPeers(mChannel, new WifiP2pManager.ActionListener() {
-                    @Override
-                    public void onSuccess() {
-                        btnStartHost.setText("HOSTING");
-                    }
-                    @Override
-                    public void onFailure(int i) {
-                        btnStartHost.setText("RETRY");
-                    }
-                });
+            mManager.discoverPeers(mChannel, new WifiP2pManager.ActionListener() {
+                @Override
+                public void onSuccess() {
+                    btnStartHost.setText("HOSTING");
+                }
+                @Override
+                public void onFailure(int i) {
+                    btnStartHost.setText("RETRY");
+                }
+            });
+
+            mManager.createGroup(mChannel, new WifiP2pManager.ActionListener() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(getApplicationContext(), "Group Created", Toast.LENGTH_SHORT).show();
+                    serverClass = new ServerClass();
+                }
+
+                @Override
+                public void onFailure(int i) {
+                    Toast.makeText(getApplicationContext(), "Failed to Create Group", Toast.LENGTH_SHORT).show();
+                }
+            });
+
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final WifiP2pDevice device = deviceArray[i];
@@ -163,7 +177,7 @@ public class HostActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
         // code for sending data
         //btnSend.setOnClickListener(new View.OnClickListener() {
@@ -182,53 +196,54 @@ public class HostActivity extends AppCompatActivity {
     WifiP2pManager.PeerListListener peerListListener = new WifiP2pManager.PeerListListener() {
         @Override
         public void onPeersAvailable(WifiP2pDeviceList peerList) {
-            if (!peerList.getDeviceList().equals(peers)) {
-                peers.clear();
-                peers.addAll(peerList.getDeviceList());
+        if (!peerList.getDeviceList().equals(peers)) {
+            peers.clear();
+            peers.addAll(peerList.getDeviceList());
 
-                deviceNameArray = new String[peerList.getDeviceList().size()];
-                deviceArray = new WifiP2pDevice[peerList.getDeviceList().size()];
+            deviceNameArray = new String[peerList.getDeviceList().size()];
+            deviceArray = new WifiP2pDevice[peerList.getDeviceList().size()];
 
-                int index = 0;
-                for (WifiP2pDevice device : peerList.getDeviceList()) {
-                    deviceNameArray[index] = device.deviceName;
-                    deviceArray[index] = device;
-                    index++;
-                }
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deviceNameArray);
-                listView.setAdapter(adapter);
+            int index = 0;
+            for (WifiP2pDevice device : peerList.getDeviceList()) {
+                deviceNameArray[index] = device.deviceName;
+                deviceArray[index] = device;
+                index++;
             }
 
-            if (peers.size() == 0) {
-                Toast.makeText(getApplicationContext(), "No device Found", Toast.LENGTH_SHORT).show();
-            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deviceNameArray);
+            listView.setAdapter(adapter);
+        }
+
+        if (peers.size() == 0) {
+            Toast.makeText(getApplicationContext(), "No device Found", Toast.LENGTH_SHORT).show();
+        }
         }
     };
 
     WifiP2pManager.ConnectionInfoListener connectionInfoListener = new WifiP2pManager.ConnectionInfoListener() {
         @Override
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pInfo) {
-        final InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
+            final InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
 
-        if (wifiP2pInfo.groupFormed && wifiP2pInfo.isGroupOwner) {
-            Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
-            serverClass = new ServerClass();
-            serverClass.start();
+            if (wifiP2pInfo.groupFormed && wifiP2pInfo.isGroupOwner) {
+                Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
+                if(deviceArray!=null) {
+                    serverClass.run();
+                }
 
-            btnStartGame.setClickable(true);
-            btnStartGame.setBackgroundColor(Color.parseColor("#000000"));
-            btnStartGame.setTextColor(Color.parseColor("#ffffff"));
-        }
-        else if (wifiP2pInfo.groupFormed) {
-            Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
-            clientClass = new ClientClass(groupOwnerAddress);
-            clientClass.start();
+                btnStartGame.setClickable(true);
+                btnStartGame.setBackgroundColor(Color.parseColor("#000000"));
+                btnStartGame.setTextColor(Color.parseColor("#ffffff"));
+            }
+            else if (wifiP2pInfo.groupFormed) {
+                Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
+                clientClass = new ClientClass(groupOwnerAddress);
+                clientClass.start();
 
-            btnStartGame.setClickable(true);
-            btnStartGame.setBackgroundColor(Color.parseColor("#000000"));
-            btnStartGame.setTextColor(Color.parseColor("#ffffff"));
-        }
+                btnStartGame.setClickable(true);
+                btnStartGame.setBackgroundColor(Color.parseColor("#000000"));
+                btnStartGame.setTextColor(Color.parseColor("#ffffff"));
+            }
         }
     };
 
@@ -246,16 +261,26 @@ public class HostActivity extends AppCompatActivity {
 
     // server / host side thread
     public class ServerClass extends Thread {
-        Socket socket;
         ServerSocket serverSocket;
+
+        public ServerClass() {
+            try{
+                serverSocket = new ServerSocket(8888);
+                socketArrayList = new ArrayList<Socket>();
+                sendReceiveArrayList = new ArrayList<SendReceive>();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         @Override
         public void run() {
             try {
-                serverSocket = new ServerSocket(8888);
-                socket = serverSocket.accept();
-                sendReceive = new SendReceive(this.socket);
-                sendReceive.start();
+                Socket socket = serverSocket.accept();
+                socketArrayList.add(socket);
+                sendReceiveArrayList.add(new SendReceive(socket));
+                // sendReceive.start();
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -349,8 +374,10 @@ public class HostActivity extends AppCompatActivity {
         for (int i = 3, j = 0; i < 20; i += 4, j++) {
             array[j] = byteTest[i];
         }
-        sendReceive.write(array);
+
+        for(SendReceive client : sendReceiveArrayList) {
+            client.start();
+            client.write(array);
+        }
     }
 }
-
-

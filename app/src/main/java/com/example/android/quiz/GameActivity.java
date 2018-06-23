@@ -2,6 +2,7 @@ package com.example.android.quiz;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +35,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView optB;
     private TextView optC;
     private TextView optD;
+    private TextView countDown;
 
     private int count = 0;
 
@@ -52,6 +54,7 @@ public class GameActivity extends AppCompatActivity {
         optB = findViewById(R.id.optB);
         optC = findViewById(R.id.optC);
         optD = findViewById(R.id.optD);
+        countDown = findViewById(R.id.count_down);
 
         startGame(arr);
         for (int i = 0; i < 5; i++) {
@@ -92,6 +95,7 @@ public class GameActivity extends AppCompatActivity {
     public void printQuestion() {
         TextView textView = findViewById(R.id.question);
         if (count < 5) {
+            startCountDown(countDown, 3);
             textView.setText(questions.get(count)[0]);
             optA.setText(questions.get(count)[1]);
             optB.setText(questions.get(count)[2]);
@@ -265,5 +269,16 @@ public class GameActivity extends AppCompatActivity {
         optB.setClickable(true);
         optC.setClickable(true);
         optD.setClickable(true);
+    }
+
+    public void startCountDown(TextView textView, int secs) {
+        final TextView countDownTextView = textView;
+        final int secsToWait = secs;
+        new CountDownTimer(secsToWait * 1000 + 1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                countDownTextView.setText("" + millisUntilFinished / 1000);
+            }
+            public void onFinish() {}
+        }.start();
     }
 }
