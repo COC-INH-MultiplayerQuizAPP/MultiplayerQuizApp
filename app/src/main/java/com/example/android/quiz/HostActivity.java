@@ -130,29 +130,29 @@ public class HostActivity extends AppCompatActivity {
         btnStartHost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            mManager.discoverPeers(mChannel, new WifiP2pManager.ActionListener() {
-                @Override
-                public void onSuccess() {
-                    btnStartHost.setText("HOSTING");
-                }
-                @Override
-                public void onFailure(int i) {
-                    btnStartHost.setText("RETRY");
-                }
-            });
+                mManager.discoverPeers(mChannel, new WifiP2pManager.ActionListener() {
+                    @Override
+                    public void onSuccess() {
+                        btnStartHost.setText("HOSTING");
+                    }
+                    @Override
+                    public void onFailure(int i) {
+                        btnStartHost.setText("RETRY");
+                    }
+                });
 
-            mManager.createGroup(mChannel, new WifiP2pManager.ActionListener() {
-                @Override
-                public void onSuccess() {
-                    Toast.makeText(getApplicationContext(), "Group Created", Toast.LENGTH_SHORT).show();
-                    serverClass = new ServerClass();
-                }
+                mManager.createGroup(mChannel, new WifiP2pManager.ActionListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(getApplicationContext(), "Group Created", Toast.LENGTH_SHORT).show();
+                        serverClass = new ServerClass();
+                    }
 
-                @Override
-                public void onFailure(int i) {
-                    Toast.makeText(getApplicationContext(), "Failed to Create Group", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(int i) {
+                        Toast.makeText(getApplicationContext(), "Failed to Create Group", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
         });
@@ -164,13 +164,11 @@ public class HostActivity extends AppCompatActivity {
                 WifiP2pConfig config = new WifiP2pConfig();
                 config.deviceAddress = device.deviceAddress;
                 // config.groupOwnerIntent = 15;
-
                 mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(getApplicationContext(), "Connected to " + device.deviceName, Toast.LENGTH_SHORT).show();
                     }
-
                     @Override
                     public void onFailure(int i) {
                         Toast.makeText(getApplicationContext(), "Unable to connect to " + device.deviceName, Toast.LENGTH_SHORT).show();
@@ -196,27 +194,27 @@ public class HostActivity extends AppCompatActivity {
     WifiP2pManager.PeerListListener peerListListener = new WifiP2pManager.PeerListListener() {
         @Override
         public void onPeersAvailable(WifiP2pDeviceList peerList) {
-        if (!peerList.getDeviceList().equals(peers)) {
-            peers.clear();
-            peers.addAll(peerList.getDeviceList());
+            if (!peerList.getDeviceList().equals(peers)) {
+                peers.clear();
+                peers.addAll(peerList.getDeviceList());
 
-            deviceNameArray = new String[peerList.getDeviceList().size()];
-            deviceArray = new WifiP2pDevice[peerList.getDeviceList().size()];
+                deviceNameArray = new String[peerList.getDeviceList().size()];
+                deviceArray = new WifiP2pDevice[peerList.getDeviceList().size()];
 
-            int index = 0;
-            for (WifiP2pDevice device : peerList.getDeviceList()) {
-                deviceNameArray[index] = device.deviceName;
-                deviceArray[index] = device;
-                index++;
+                int index = 0;
+                for (WifiP2pDevice device : peerList.getDeviceList()) {
+                    deviceNameArray[index] = device.deviceName;
+                    deviceArray[index] = device;
+                    index++;
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deviceNameArray);
+                listView.setAdapter(adapter);
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deviceNameArray);
-            listView.setAdapter(adapter);
-        }
-
-        if (peers.size() == 0) {
-            Toast.makeText(getApplicationContext(), "No device Found", Toast.LENGTH_SHORT).show();
-        }
+            if (peers.size() == 0) {
+                Toast.makeText(getApplicationContext(), "No device Found", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -379,5 +377,17 @@ public class HostActivity extends AppCompatActivity {
             client.start();
             client.write(array);
         }
+
+        mManager.removeGroup(mChannel, new WifiP2pManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(getApplicationContext(), "Group Closed", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int reason) {
+                Toast.makeText(getApplicationContext(), "Failure Closing Group", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class ScoreActivity extends AppCompatActivity {
 
     @Override
@@ -88,6 +90,8 @@ public class ScoreActivity extends AppCompatActivity {
         // if player
         // send score along with player name
         // once the arrayList is received turn on leaderBoard
+
+
     }
 
     public void show_leaderboard(View view) {

@@ -10,17 +10,34 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="HOST"
+        android:layout_weight="5"
+        android:text="QUIZ"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="#0000ff"
-        android:onClick="host"/>
+        android:textSize="130sp"
+        android:textColor="#FF8A65"
+        android:background="#795548"/>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#0000ff"/>
+        android:layout_height="2dp"
+        android:background="#ff0000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="HOST"
+        android:gravity="center"
+        android:textSize="36sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:onClick="host"
+        android:padding="16dp"
+        android:background="#FF8A65"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff0000"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -28,8 +45,10 @@
         android:layout_weight="1"
         android:text="PLAYER"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="#0000ff"
-        android:onClick="player"/>
+        android:textSize="36sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:onClick="player"
+        android:padding="16dp"
+        android:background="#FF8A65"/>
 
 </LinearLayout>
