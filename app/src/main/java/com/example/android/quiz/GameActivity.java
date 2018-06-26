@@ -149,21 +149,21 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'A';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'A'))) {
-                optA.setBackgroundColor(Color.parseColor("#00ff00"));
+                optA.setBackgroundColor(Color.parseColor("#9CCC65"));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'B'))) {
-                    optB.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optB.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'C'))) {
-                    optC.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optC.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else {
-                    optD.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optD.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
 
-                optA.setBackgroundColor(Color.parseColor("#ff0000"));
+                optA.setBackgroundColor(Color.parseColor("#FF7043"));
                 isCorrect[count - 1] = false;
             }
             disableListners();
@@ -178,20 +178,20 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'B';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'B'))) {
-                optB.setBackgroundColor(Color.parseColor("#00ff00"));
+                optB.setBackgroundColor(Color.parseColor("#9CCC65"));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'A'))) {
-                    optA.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optA.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'C'))) {
-                    optC.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optC.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else {
-                    optD.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optD.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
-                optB.setBackgroundColor(Color.parseColor("#ff0000"));
+                optB.setBackgroundColor(Color.parseColor("#FF7043"));
                 isCorrect[count - 1] = false;
             }
 
@@ -207,20 +207,20 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'C';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'C'))) {
-                optC.setBackgroundColor(Color.parseColor("#00ff00"));
+                optC.setBackgroundColor(Color.parseColor("#9CCC65"));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'A'))) {
-                    optA.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optA.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'B'))) {
-                    optB.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optB.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else {
-                    optD.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optD.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
-                optC.setBackgroundColor(Color.parseColor("#ff0000"));
+                optC.setBackgroundColor(Color.parseColor("#FF7043"));
                 isCorrect[count - 1] = false;
             }
 
@@ -236,20 +236,20 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'D';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'D'))) {
-                optD.setBackgroundColor(Color.parseColor("#00ff00"));
+                optD.setBackgroundColor(Color.parseColor("#9CCC65"));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'A'))) {
-                    optA.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optA.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'B'))) {
-                    optB.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optB.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
                 else {
-                    optC.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optC.setBackgroundColor(Color.parseColor("#9CCC65"));
                 }
-                optD.setBackgroundColor(Color.parseColor("#ff0000"));
+                optD.setBackgroundColor(Color.parseColor("#FF7043"));
                 isCorrect[count - 1] = false;
             }
 

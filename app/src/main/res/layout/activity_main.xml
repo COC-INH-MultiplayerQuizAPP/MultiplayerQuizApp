@@ -7,7 +7,7 @@
     tools:context="com.example.android.quiz.MainActivity"
     android:orientation="vertical">
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
@@ -15,40 +15,40 @@
         android:gravity="center"
         android:textSize="130sp"
         android:textColor="#FF8A65"
-        android:background="#795548"/>
+        android:background="#3E2723"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#ff0000"/>
+        android:background="#FF9E80"/>
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="HOST"
         android:gravity="center"
-        android:textSize="36sp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textSize="32sp"
+        android:textColor="#3E2723"
         android:onClick="host"
         android:padding="16dp"
-        android:background="#FF8A65"/>
+        android:background="@drawable/ripple" />
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#ff0000"/>
+        android:background="#212121"/>
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="PLAYER"
         android:gravity="center"
-        android:textSize="36sp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textSize="32sp"
+        android:textColor="#3E2723"
         android:onClick="player"
         android:padding="16dp"
-        android:background="#FF8A65"/>
+        android:background="@drawable/ripple"/>
 
 </LinearLayout>

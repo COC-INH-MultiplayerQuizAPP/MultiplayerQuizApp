@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.net.wifi.WifiManager;
-import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pInfo;
@@ -14,6 +12,7 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,8 +24,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -35,7 +37,10 @@ import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 public class HostActivity extends AppCompatActivity {
 
@@ -93,11 +98,6 @@ public class HostActivity extends AppCompatActivity {
         listView = findViewById(R.id.peerListView);
         btnStartGame = findViewById(R.id.start_game);
 
-        // btnSend = findViewById(R.id.sendButton);
-        // readMsgBox = findViewById(R.id.readMsg); textView
-        // writeMsg = findViewById(R.id.writeMsg); editText
-        // wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
         mManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
         mChannel = mManager.initialize(this, getMainLooper(), null);
         mReceiver = new WiFiDirectBroadcastReceiver(mManager, mChannel, this, new PlayerActivity(), 1);
@@ -110,22 +110,6 @@ public class HostActivity extends AppCompatActivity {
     }
 
     private void expListener() {
-
-        //        btnOnOff.setOnClickListener(new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View view) {
-        //
-        //                // wifiManager.isWifiEnabled() returns true if Wifi is on
-        //                if (wifiManager.isWifiEnabled()) {
-        //                    wifiManager.setWifiEnabled(false);
-        //                    btnOnOff.setText("ON");
-        //                }
-        //                else {
-        //                    wifiManager.setWifiEnabled(true);
-        //                    btnOnOff.setText("OFF");
-        //                }
-        //            }
-        //        });
 
         btnStartHost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,36 +140,6 @@ public class HostActivity extends AppCompatActivity {
 
             }
         });
-
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final WifiP2pDevice device = deviceArray[i];
-                WifiP2pConfig config = new WifiP2pConfig();
-                config.deviceAddress = device.deviceAddress;
-                // config.groupOwnerIntent = 15;
-                mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(getApplicationContext(), "Connected to " + device.deviceName, Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onFailure(int i) {
-                        Toast.makeText(getApplicationContext(), "Unable to connect to " + device.deviceName, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });*/
-
-        // code for sending data
-        //btnSend.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        String msg = writeMsg.getText().toString();
-        //        byte[] byteTest = msg.getBytes();
-        //        sendReceive.write(byteTest);
-        //    }
-        //});
 
         btnStartGame.setClickable(false);
     }
@@ -221,27 +175,27 @@ public class HostActivity extends AppCompatActivity {
     WifiP2pManager.ConnectionInfoListener connectionInfoListener = new WifiP2pManager.ConnectionInfoListener() {
         @Override
         public void onConnectionInfoAvailable(WifiP2pInfo wifiP2pInfo) {
-            final InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
+        final InetAddress groupOwnerAddress = wifiP2pInfo.groupOwnerAddress;
 
-            if (wifiP2pInfo.groupFormed && wifiP2pInfo.isGroupOwner) {
-                Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
-                if(deviceArray!=null) {
-                    serverClass.run();
-                }
-
-                btnStartGame.setClickable(true);
-                btnStartGame.setBackgroundColor(Color.parseColor("#000000"));
-                btnStartGame.setTextColor(Color.parseColor("#ffffff"));
+        if (wifiP2pInfo.groupFormed && wifiP2pInfo.isGroupOwner) {
+            Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
+            if(deviceArray!=null) {
+                serverClass.run();
             }
-            else if (wifiP2pInfo.groupFormed) {
-                Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
-                clientClass = new ClientClass(groupOwnerAddress);
-                clientClass.start();
 
-                btnStartGame.setClickable(true);
-                btnStartGame.setBackgroundColor(Color.parseColor("#000000"));
-                btnStartGame.setTextColor(Color.parseColor("#ffffff"));
-            }
+            btnStartGame.setClickable(true);
+            btnStartGame.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_host_player));
+            btnStartGame.setTextColor(Color.parseColor("#ffffff"));
+        }
+        else if (wifiP2pInfo.groupFormed) {
+            Toast.makeText(getApplicationContext(), "You are Host", Toast.LENGTH_SHORT).show();
+            clientClass = new ClientClass(groupOwnerAddress);
+            clientClass.start();
+
+            btnStartGame.setClickable(true);
+            btnStartGame.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_host_player));
+            btnStartGame.setTextColor(Color.parseColor("#ffffff"));
+        }
         }
     };
 
@@ -356,15 +310,32 @@ public class HostActivity extends AppCompatActivity {
         }
     }
 
-    public void startGame(View view) {
-        int[] arr = { 1, 2, 5, 3, 4 };
+    public void startGame(View view) throws IOException {
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.questions)));
+        String input;
+        int len = 0;
+        while((input = bufferedReader.readLine()) != null)
+            len++;
+
+        Set<Integer> questionsSet = new HashSet<>();
+        Random random = new Random();
+        while(questionsSet.size() < 5)
+            questionsSet.add(random.nextInt(len) + 1);
+
+        Integer[] questionsArray = questionsSet.toArray(new Integer[questionsSet.size()]);
+        int[] questions = new int[5];
+        for (int i = 0; i < 5; i++) {
+            questions[i] = questionsArray[i];
+        }
+
         Intent intent = new Intent(HostActivity.this, GameActivity.class);
-        intent.putExtra("questions", arr);
+        intent.putExtra("questions", questions);
         startActivity(intent);
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(20);
         IntBuffer intBuffer = byteBuffer.asIntBuffer();
-        intBuffer.put(arr);
+        intBuffer.put(questions);
 
         byte[] byteTest = byteBuffer.array();
         byte[] array = new byte[5];

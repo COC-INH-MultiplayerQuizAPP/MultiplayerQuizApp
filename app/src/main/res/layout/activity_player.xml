@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".PlayerActivity">
 
-    <TextView
+    <Button
         android:id="@+id/search_for_host"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:gravity="center"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:background="@android:color/background_dark"
+        android:background="@drawable/ripple_host_player"
         android:textColor="#fff"
         android:text="SEARCH FOR HOST"
         android:textSize="24sp" />
@@ -25,12 +25,14 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorPrimary"/>
+        android:background="#BCAAA4"/>
 
-    <TextView
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#3E2723"/>
+
+    <Button
         android:id="@+id/ready"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,9 +40,8 @@
         android:gravity="center"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:layout_marginTop="16dp"
-        android:background="#aaa"
-        android:textColor="#000"
+        android:background="#8D6E63"
+        android:textColor="#3E2723"
         android:text="READY"
         android:textSize="24sp" />
 

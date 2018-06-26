@@ -13,6 +13,7 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -206,14 +207,14 @@ public class PlayerActivity extends AppCompatActivity {
                 serverClass = new ServerClass();
                 serverClass.start();
 
-                btnReady.setBackgroundColor(Color.parseColor("#000000"));
+                btnReady.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_host_player));
                 btnReady.setTextColor(Color.parseColor("#ffffff"));
             }
             else if (wifiP2pInfo.groupFormed) {
                 clientClass = new ClientClass(groupOwnerAddress);
                 clientClass.start();
 
-                btnReady.setBackgroundColor(Color.parseColor("#000000"));
+                btnReady.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_host_player));
                 btnReady.setTextColor(Color.parseColor("#ffffff"));
             }
         }
