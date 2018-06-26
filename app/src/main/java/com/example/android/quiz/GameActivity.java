@@ -3,6 +3,7 @@ package com.example.android.quiz;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -110,12 +111,12 @@ public class GameActivity extends AppCompatActivity {
             Utils.delay(3, new Utils.DelayCallback() {
                 @Override
                 public void afterDelay() {
-                    enableListners();
-                    optA.setBackgroundColor(Color.parseColor("#ffffff"));
-                    optB.setBackgroundColor(Color.parseColor("#ffffff"));
-                    optC.setBackgroundColor(Color.parseColor("#ffffff"));
-                    optD.setBackgroundColor(Color.parseColor("#ffffff"));
-                    printQuestion();
+                enableListners();
+                optA.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay));
+                optB.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay));
+                optC.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay));
+                optD.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay));
+                printQuestion();
                 }
             });
         }
@@ -149,21 +150,21 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'A';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'A'))) {
-                optA.setBackgroundColor(Color.parseColor("#9CCC65"));
+                optA.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'B'))) {
-                    optB.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optB.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'C'))) {
-                    optC.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optC.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else {
-                    optD.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optD.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
 
-                optA.setBackgroundColor(Color.parseColor("#FF7043"));
+                optA.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_red));
                 isCorrect[count - 1] = false;
             }
             disableListners();
@@ -178,20 +179,20 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'B';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'B'))) {
-                optB.setBackgroundColor(Color.parseColor("#9CCC65"));
+                optB.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'A'))) {
-                    optA.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optA.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'C'))) {
-                    optC.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optC.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else {
-                    optD.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optD.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
-                optB.setBackgroundColor(Color.parseColor("#FF7043"));
+                optB.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_red));
                 isCorrect[count - 1] = false;
             }
 
@@ -207,20 +208,20 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'C';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'C'))) {
-                optC.setBackgroundColor(Color.parseColor("#9CCC65"));
+                optC.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'A'))) {
-                    optA.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optA.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'B'))) {
-                    optB.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optB.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else {
-                    optD.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optD.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
-                optC.setBackgroundColor(Color.parseColor("#FF7043"));
+                optC.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_red));
                 isCorrect[count - 1] = false;
             }
 
@@ -236,20 +237,20 @@ public class GameActivity extends AppCompatActivity {
 
             your_ans[count - 1] = 'D';
             if (questions.get(count - 1)[5].equals(String.format("%c", 'D'))) {
-                optD.setBackgroundColor(Color.parseColor("#9CCC65"));
+                optD.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 isCorrect[count - 1] = true;
             }
             else {
                 if (correct_ans[count - 1].equals(String.format("%c", 'A'))) {
-                    optA.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optA.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else if (correct_ans[count - 1].equals(String.format("%c", 'B'))) {
-                    optB.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optB.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
                 else {
-                    optC.setBackgroundColor(Color.parseColor("#9CCC65"));
+                    optC.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_green));
                 }
-                optD.setBackgroundColor(Color.parseColor("#FF7043"));
+                optD.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ripple_gameplay_red));
                 isCorrect[count - 1] = false;
             }
 

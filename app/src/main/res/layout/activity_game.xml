@@ -14,25 +14,19 @@
         android:padding="12dp"
         android:gravity="center"
         android:textColor="#3E2723"
-        android:textSize="30sp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#3E2723"/>
+        android:textSize="30sp"
+        android:background="#FF7043"/>
 
     <TextView
         android:id="@+id/question"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="12dp"
-        android:textSize="22sp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#3E2723"/>
+        android:textSize="22sp"
+        android:background="#3E2723"
+        android:textColor="#BCAAA4"/>
 
     <TextView
         android:id="@+id/optA"
@@ -40,7 +34,9 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:onClick="optAClicked"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:background="@drawable/ripple_gameplay"
+        android:textColor="#3E2723"/>
 
     <View
         android:layout_width="match_parent"
@@ -53,7 +49,9 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:onClick="optBClicked"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:background="@drawable/ripple_gameplay"
+        android:textColor="#3E2723"/>
 
     <View
         android:layout_width="match_parent"
@@ -66,7 +64,9 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:onClick="optCClicked"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:background="@drawable/ripple_gameplay"
+        android:textColor="#3E2723"/>
 
     <View
         android:layout_width="match_parent"
@@ -79,11 +79,8 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:onClick="optDClicked"
-        android:textSize="22sp"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#3E2723"/>
+        android:textSize="22sp"
+        android:background="@drawable/ripple_gameplay"
+        android:textColor="#3E2723"/>
 
 </LinearLayout>

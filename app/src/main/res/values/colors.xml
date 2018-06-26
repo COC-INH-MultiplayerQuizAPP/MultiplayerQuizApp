@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="ButtonOnMainActivity">#FF8A65</color>
     <color name="ButtonOnHostPlayer">#3E2723</color>
+    <color name="ButtonGamePlay">#BCAAA4</color>
+    <color name="ButtonGamePlayGreen">#9CCC65</color>
+    <color name="ButtonGamePlayRed">#FF7043</color>
 </resources>
