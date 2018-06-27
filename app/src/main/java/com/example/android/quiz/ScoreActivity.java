@@ -33,27 +33,27 @@ public class ScoreActivity extends AppCompatActivity {
             finalScore += scr;
         }
 
-        TextView your_ans_1 = findViewById(R.id.your_ans_1);
-        your_ans_1.setText(String.format("%c", your_ans[0]));
-        TextView your_ans_2 = findViewById(R.id.your_ans_2);
-        your_ans_2.setText(String.format("%c", your_ans[1]));
-        TextView your_ans_3 = findViewById(R.id.your_ans_3);
-        your_ans_3.setText(String.format("%c", your_ans[2]));
-        TextView your_ans_4 = findViewById(R.id.your_ans_4);
-        your_ans_4.setText(String.format("%c", your_ans[3]));
-        TextView your_ans_5 = findViewById(R.id.your_ans_5);
-        your_ans_5.setText(String.format("%c", your_ans[4]));
-
-        TextView correct_ans_1 = findViewById(R.id.correct_ans_1);
-        correct_ans_1.setText(correct_ans[0]);
-        TextView correct_ans_2 = findViewById(R.id.correct_ans_2);
-        correct_ans_2.setText(correct_ans[1]);
-        TextView correct_ans_3 = findViewById(R.id.correct_ans_3);
-        correct_ans_3.setText(correct_ans[2]);
-        TextView correct_ans_4 = findViewById(R.id.correct_ans_4);
-        correct_ans_4.setText(correct_ans[3]);
-        TextView correct_ans_5 = findViewById(R.id.correct_ans_5);
-        correct_ans_5.setText(correct_ans[4]);
+//        TextView your_ans_1 = findViewById(R.id.your_ans_1);
+//        your_ans_1.setText(String.format("%c", your_ans[0]));
+//        TextView your_ans_2 = findViewById(R.id.your_ans_2);
+//        your_ans_2.setText(String.format("%c", your_ans[1]));
+//        TextView your_ans_3 = findViewById(R.id.your_ans_3);
+//        your_ans_3.setText(String.format("%c", your_ans[2]));
+//        TextView your_ans_4 = findViewById(R.id.your_ans_4);
+//        your_ans_4.setText(String.format("%c", your_ans[3]));
+//        TextView your_ans_5 = findViewById(R.id.your_ans_5);
+//        your_ans_5.setText(String.format("%c", your_ans[4]));
+//
+//        TextView correct_ans_1 = findViewById(R.id.correct_ans_1);
+//        correct_ans_1.setText(correct_ans[0]);
+//        TextView correct_ans_2 = findViewById(R.id.correct_ans_2);
+//        correct_ans_2.setText(correct_ans[1]);
+//        TextView correct_ans_3 = findViewById(R.id.correct_ans_3);
+//        correct_ans_3.setText(correct_ans[2]);
+//        TextView correct_ans_4 = findViewById(R.id.correct_ans_4);
+//        correct_ans_4.setText(correct_ans[3]);
+//        TextView correct_ans_5 = findViewById(R.id.correct_ans_5);
+//        correct_ans_5.setText(correct_ans[4]);
 
         TextView time_1 = findViewById(R.id.time_1);
         time_1.setText(String.format("%.3f", (1.0 * time[0])/1000));
