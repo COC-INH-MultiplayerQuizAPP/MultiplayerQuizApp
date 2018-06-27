@@ -97,7 +97,7 @@ public class GameActivity extends AppCompatActivity {
     public void printQuestion() {
         TextView textView = findViewById(R.id.question);
         if (count < 5) {
-            startCountDown(countDown, 3);
+            startCountDown(countDown, 10);
             textView.setText(questions.get(count)[0]);
             optA.setText(questions.get(count)[1]);
             optB.setText(questions.get(count)[2]);
@@ -109,7 +109,7 @@ public class GameActivity extends AppCompatActivity {
             Log.i("Start: ", String.format("%d", start));
             clicked = false;
 
-            Utils.delay(3, new Utils.DelayCallback() {
+            Utils.delay(10, new Utils.DelayCallback() {
                 @Override
                 public void afterDelay() {
                 enableListners();
