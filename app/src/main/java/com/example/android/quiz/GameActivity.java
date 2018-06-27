@@ -124,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
         else {
             for (int i = 0; i < 5; i++) {
                 if (your_ans[i] == '-') {
-                    time[i] = 3000;
+                    time[i] = 10000;
                 }
 
                 if (isCorrect[i]) {
