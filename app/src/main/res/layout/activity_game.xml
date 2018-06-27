@@ -23,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="12dp"
-        android:textSize="22sp"
+        android:padding="16dp"
+        android:textSize="26sp"
         android:background="#3E2723"
         android:textColor="#BCAAA4"/>
 
@@ -32,9 +32,9 @@
         android:id="@+id/optA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:padding="16dp"
         android:onClick="optAClicked"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:background="@drawable/ripple_gameplay"
         android:textColor="#3E2723"/>
 
@@ -47,9 +47,9 @@
         android:id="@+id/optB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:padding="16dp"
         android:onClick="optBClicked"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:background="@drawable/ripple_gameplay"
         android:textColor="#3E2723"/>
 
@@ -62,9 +62,9 @@
         android:id="@+id/optC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:padding="16dp"
         android:onClick="optCClicked"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:background="@drawable/ripple_gameplay"
         android:textColor="#3E2723"/>
 
@@ -77,9 +77,9 @@
         android:id="@+id/optD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:padding="16dp"
         android:onClick="optDClicked"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:background="@drawable/ripple_gameplay"
         android:textColor="#3E2723"/>
 
