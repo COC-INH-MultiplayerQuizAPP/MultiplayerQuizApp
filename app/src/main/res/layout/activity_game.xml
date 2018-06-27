@@ -15,7 +15,7 @@
         android:gravity="center"
         android:textColor="#3E2723"
         android:textSize="30sp"
-        android:background="#FF7043"/>
+        android:background="#FF8A65"/>
 
     <TextView
         android:id="@+id/question"

@@ -68,7 +68,7 @@ public class PlayerActivity extends AppCompatActivity {
                     for (int i = 0; i <  5; i++) {
                         arr[i] = readBuff[i];
                     }
-                    Intent intent = new Intent(PlayerActivity.this, GameActivity.class);
+                    Intent intent = new Intent(PlayerActivity.this, StartsInActivity.class);
                     intent.putExtra("questions", arr);
                     startActivity(intent);
                     break;

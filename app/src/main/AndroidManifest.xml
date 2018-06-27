@@ -3,14 +3,30 @@
     package="com.example.android.quiz">
 
     <!-- Adding Permissions for wifi -->
-    <uses-permission android:required="true" android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:required="true" android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:required="true" android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:required="true" android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:required="true" android:name="android.permission.INTERNET" />
-    <uses-permission android:required="true" android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:required="true" android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:required="true" android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.ACCESS_WIFI_STATE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.CHANGE_WIFI_STATE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.CHANGE_NETWORK_STATE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:required="true" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -40,7 +56,8 @@
             android:label="SCORE" />
         <activity
             android:name=".LeaderboardActivity"
-            android:label="LEADERBOARD"/>
+            android:label="LEADERBOARD" />
+        <activity android:name=".StartsInActivity"></activity>
     </application>
 
 </manifest>

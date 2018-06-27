@@ -329,7 +329,7 @@ public class HostActivity extends AppCompatActivity {
             questions[i] = questionsArray[i];
         }
 
-        Intent intent = new Intent(HostActivity.this, GameActivity.class);
+        Intent intent = new Intent(HostActivity.this, StartsInActivity.class);
         intent.putExtra("questions", questions);
         startActivity(intent);
 
