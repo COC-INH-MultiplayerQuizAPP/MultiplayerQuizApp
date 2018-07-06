@@ -94,8 +94,8 @@ public class ScoreActivity extends AppCompatActivity {
 
     }
 
-    public void show_leaderboard(View view) {
-        Intent intent = new Intent(ScoreActivity.this, LeaderboardActivity.class);
+    public void play_again(View view) {
+        Intent intent = new Intent(ScoreActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }
