@@ -376,14 +376,14 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/leaderboard"
+        android:id="@+id/play_again"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#FF8A65"
         android:gravity="center"
-        android:onClick="show_leaderboard"
-        android:text="LEADERBOARD"
+        android:onClick="play_again"
+        android:text="PLAY AGAIN"
         android:textColor="#3E2723"
         android:textSize="25sp" />
 
